@@ -1,0 +1,2 @@
+recursive-include authenticate/static *
+recursive-include authenticate/templates *
