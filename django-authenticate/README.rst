@@ -19,9 +19,19 @@ Quick Start
 
     path("authenticate/", include("authenticate.urls")),
 
-3. Run ``python manage.py makemigrations`` to create migrations for models
-4. Run ``python manage.py migrate`` to create the models.
+3. In settings.py add::
 
-5. Start the development server by running ``py manage.py runsrver`` and visit the admin @ ``/admin/`` url to administer users.
+    AUTH_USER_MODEL = 'authenticate.Registrar'
 
-6. Visit the ``/authenticate/register`` url to register new users.
+4. In settings.py add::
+
+    LOGIN_URL = 'authenticate:login'
+
+5. Run ``python manage.py makemigrations`` to create migrations for models
+6. Run ``python manage.py migrate`` to create the models.
+
+7. Start the development server by running ``py manage.py runsrver`` and visit the admin @ ``/admin/`` url to administer users.
+
+8. Visit the ``/authenticate/register`` url to register new users.
+9. Visit the ``/authenticate/login`` url to login users.
+
