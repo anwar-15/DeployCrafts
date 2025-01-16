@@ -1,3 +1,5 @@
+BSD 4-Clause License
+
 Copyright (c) 2025, Sayed Anwar.
 All rights reserved.
 
