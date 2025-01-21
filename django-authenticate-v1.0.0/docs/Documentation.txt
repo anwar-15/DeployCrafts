@@ -1,0 +1,37 @@
+INSTALLATION GUIDE:
+-------------------
+If you already have django 5.1.4 configured then use flag: --no-deps in the command below.
+py -m pip install ./django-authenticate-v1.0.0/dist/django_authenticate-1.0.0.tar.gz --no-deps --target "destination-folder"
+
+After successful installation of the package
+--------------------------------------------
+
+1. django-admin startproject your-project-name target-directory-name
+
+2. your-project --> settings.py :
+	
+	#include the app name in the settings.py
+	INSTALLED_APPS = [
+	'authenticate.apps.AuthenticateConfig' ,
+	]
+3. your-project --> urls.py
+
+	import django.urls import include
+	#include the path for polls app
+	urlpatterns = [
+    		path('authenticate/', include('authenticate.urls')),
+	]	
+
+4. In settings.py add: AUTH_USER_MODEL = 'authenticate.Registrar'
+5. In settings.py add: LOGIN_URL = 'authenticate:login'
+6. py manage.py makemigrations
+7. py manage.py migrate
+
+8. create admin user :
+	py manage.py createsuperuser admin
+
+9. Testing the app:
+	py manage.py runserver
+
+10. Register url - /authenticate/register/
+11. Login url - /authenticate/login/

@@ -1,0 +1,3 @@
+recursive-include src/authenticate/static *
+recursive-include src/authenticate/templates *
+recursive-include src/templates/admin *

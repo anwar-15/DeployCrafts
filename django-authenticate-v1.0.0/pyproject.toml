@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = {find = {where = ["src"], include = ["*"]}}
+
+[project]
+name = "django-authenticate"
+version = "1.0.0"
+description = "A Django app to allow users to register, login and logout, with Admin Site Control"
+readme = "README.rst"
+requires-python = ">=3.12.8"
+dependencies = [
+    "django>=5.1.4",
+]
+
+authors = [
+    {name = "Sayed Anwar", email = "muhammad.sayed.anwar@gmail.com"},
+]
+
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 5.1.4",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12.8",
+    "Topic :: Internet :: WWW/HTTP",
+]
+
+[project.urls]
+homepage = "https://deploycrafts.cloud"
+repository = "https://www.github.com/anwar-15/DeployCrafts"

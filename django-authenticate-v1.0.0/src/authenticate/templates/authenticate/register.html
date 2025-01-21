@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="{% static 'authenticate/src/tailwind.css' %}">
+    <link rel="stylesheet" href="{% static 'authenticate/style.css' %}">
+</head>
+
+<body class="bg-pattern h-screen flex flex-col justify-center items-center">
+    <div class="bg-gray-900 bg-opacity-80 p-8 rounded-lg shadow-lg w-full max-w-sm text-center">
+        <h2 class="text-2xl font-bold mb-4 text-[#007bff]">DeployCrafts</h2>
+        <p class="text-lg font-semibold mb-4 text-orange-500">Register</p>
+        <form action="{% url 'authenticate:register' %}" method="post">
+            {% csrf_token %}
+            <!-- Display form errors (if any) -->
+            {% for field in form %}
+                <div>
+                <!-- Display field-specific errors -->
+                    {% if field.errors %}
+                        <ul style="color: red;">
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <!-- Display non-field errors -->
+            {% if form.non_field_errors %}
+                <div style="color: red;">
+                    <ul>
+                        {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            <!-- Display messages error -->
+            {% if messages %}
+            <div>
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            </div>
+            {% endif %}
+            <!-- Username -->
+            <div class="mb-4">
+                <input type="text" name="username" placeholder="Username"
+                       class="w-full p-2 border border-gray-300 rounded text-black"
+                       value="{{ form.username.value|default:'' }}" required>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-4">
+                <input type="email" name="email" placeholder="Email Address"
+                       class="w-full p-2 border border-gray-300 rounded text-black"
+                       value="{{ form.email.value|default:'' }}" required>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-4">
+                <input type="password" name="password" placeholder="Password"
+                       class="w-full p-2 border border-gray-300 rounded text-black" required autocomplete="new-password">
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mb-4">
+                <input type="password" name="confirm_password" placeholder="Confirm Password"
+                       class="w-full p-2 border border-gray-300 rounded text-black" required autocomplete="new-password">
+            </div>
+
+            <button type="submit" class="cta">Register</button>
+        </form>
+        <p class="mt-4 text-white">Already have an account? <a href="{% url 'authenticate:login' %}" class="text-blue-500 hover:underline">Login HERE</a></p>
+    </div>
+<footer>
+    <p>Powered by <strong>DeployCrafts</strong></p>
+</footer>
+</body>
+</html>
